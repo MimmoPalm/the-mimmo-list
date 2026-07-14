@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mimmo List | Napoli</title>
+<meta name="description" content="Where to eat, what to see and what to do around Napoli, the Sorrento peninsula and the Amalfi coast, according to Mimmo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F6F3;
+    --surface: #FFFFFF;
+    --ink: #111111;
+    --muted: #787774;
+    --border: #EAEAEA;
+    --pale-blue: #E1F3FE;
+    --pale-blue-ink: #1F6C9F;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header {
+    padding: 96px 0 64px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(44px, 9vw, 68px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .tagline {
+    margin-top: 16px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 18px;
+  }
+  .disclaimer {
+    margin-top: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  nav {
+    margin-top: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0 14px;
+  }
+  nav a.active { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
+  nav a:hover { color: var(--ink); }
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .section-note {
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+  .place {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .place:last-child { border-bottom: none; }
+  .place-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .place-name {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    transition: border-color 0.2s;
+  }
+  .place-name:hover { border-color: var(--ink); }
+  .tag {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--pale-blue);
+    color: var(--pale-blue-ink);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+  .place p {
+    margin-top: 6px;
+    color: #2F3437;
+  }
+  footer {
+    padding: 56px 0 80px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    font-style: italic;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>The Mimmo List</h1>
+    <p class="tagline">Napoli, the Sorrento peninsula and the Amalfi coast, according to Mimmo.</p>
+    <p class="disclaimer">Home turf. No sponsors, no algorithms.</p>
+    <nav>
+      <a href="/">London</a>
+      <a href="/napoli" class="active">Napoli</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>Napoli</h2>
+    <p class="section-note">The city. Start with the pizza.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Gino+e+Toto+Sorbillo&ftid=0x133b084248f325bb:0xbd02ed67d632a4e4" target="_blank" rel="noopener">Gino e Toto Sorbillo</a>
+        <span class="tag">Centro Storico</span>
+      </div>
+      <p>The iconic pizzeria on Via dei Tribunali. Expect a queue, it is part of the experience.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Pizzeria+Concettina+ai+Tre+Santi&ftid=0x133b0868cafaa137:0x14245d59d7689a6a" target="_blank" rel="noopener">Pizzeria Concettina ai Tre Santi</a>
+        <span class="tag">Rione Sanità</span>
+      </div>
+      <p>Pizza in the Sanità, one of the most characterful districts in the city.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Acqua+%26+Sale&ftid=0x133bbc7b5a0ad51d:0x6f5cb332afda602b" target="_blank" rel="noopener">Acqua &amp; Sale</a>
+        <span class="tag">Scafati, near Pompei</span>
+      </div>
+      <p>Seafood just outside the city. Handy if you are visiting Pompei.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Penisola Sorrentina</h2>
+    <p class="section-note">Sorrento and the quiet villages around it.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Ristorante+da+Francesco&ftid=0x133b9d5a6a5de9b1:0xf78ef5a9cee85a17" target="_blank" rel="noopener">Ristorante da Francesco</a>
+        <span class="tag">Schiazzano, Massa Lubrense</span>
+      </div>
+      <p>Proper local cooking in a tiny village, away from the crowds.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Trattoria+da+Maria+Grazia,+Via+Marina+di+Puolo+47,+Sorrento" target="_blank" rel="noopener">Trattoria da Maria Grazia</a>
+        <span class="tag">Marina di Puolo</span>
+      </div>
+      <p>Trattoria on the little beach at Marina di Puolo.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Ristorante+Don+Vito&ftid=0x133b9e9c9006850d:0xa611639be6e6ec0f" target="_blank" rel="noopener">Ristorante Don Vito</a>
+        <span class="tag">Marina di Puolo</span>
+      </div>
+      <p>Seafront dining on the same bay.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Ristorante+St.+Raphael&ftid=0x133b9fafd408cc51:0x6590022a19431cba" target="_blank" rel="noopener">Ristorante St. Raphael</a>
+        <span class="tag">Marina di Puolo</span>
+      </div>
+      <p>Bar and restaurant by the water. Good for a long lunch.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Bar+Orlando&ftid=0x133b9c08b5d4a6f7:0x95a32c4d4af35b8b" target="_blank" rel="noopener">Bar Orlando</a>
+        <span class="tag">Sant'Agata sui Due Golfi</span>
+      </div>
+      <p>Village bar in Sant'Agata. Great value, great people watching.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Bar+Sport&ftid=0x133b9c3a6ff9896f:0x3fcd3f384fce1cef" target="_blank" rel="noopener">Bar Sport</a>
+        <span class="tag">Massa Lubrense</span>
+      </div>
+      <p>The classic village bar. Coffee, pastries, a few euros well spent.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Grace+Kitchen+Bar&ftid=0x133b9c3017235775:0x7f173e3f1fad003b" target="_blank" rel="noopener">Grace Kitchen Bar</a>
+        <span class="tag">Massa Lubrense</span>
+      </div>
+      <p>Casual kitchen bar in the centre of Massa Lubrense.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Angelo's+Snack+and+Drink&ftid=0x133b9c338859e60d:0xacd1cff561f3c5c4" target="_blank" rel="noopener">Angelo's Snack and Drink</a>
+        <span class="tag">Massa Lubrense</span>
+      </div>
+      <p>Simple snacks and drinks, honest prices.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Eughenes&ftid=0x133b9c51a0105c3b:0x3f78297c7bb5080d" target="_blank" rel="noopener">Eughenes</a>
+        <span class="tag">Massa Lubrense</span>
+      </div>
+      <p>A local favourite up in the hills of the peninsula.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Il+Ruttino&ftid=0x133b99462fc43899:0x5ce2a1663fa6423e" target="_blank" rel="noopener">Il Ruttino</a>
+        <span class="tag">Sant'Agnello</span>
+      </div>
+      <p>Much loved trattoria near Sorrento. Book ahead.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Costiera Amalfitana</h2>
+    <p class="section-note">The coast. Eat, swim, walk, repeat.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Sentiero+degli+Dei&ftid=0x133b96e60f96cff1:0xd025e20ac1918cac" target="_blank" rel="noopener">Sentiero degli Dei</a>
+        <span class="tag">Agerola to Nocelle</span>
+      </div>
+      <p>The Path of the Gods. The walk of the trip, high above the coast. Start from Bomerano and finish in Nocelle above Positano.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Agricola+Fore+Porta&ftid=0x133b95ba347a5d87:0x6ce2af7b61f6dbda" target="_blank" rel="noopener">Agricola Fore Porta</a>
+        <span class="tag">Amalfi</span>
+      </div>
+      <p>Great genuine restaurant just off the Valle delle Ferriere. Highly recommend stopping after the hike before returning to Amalfi.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Kasai&ftid=0x133b96daa1ee1a0f:0xf4c06248f051cdf9" target="_blank" rel="noopener">Kasai</a>
+        <span class="tag">Praiano</span>
+      </div>
+      <p>One for a proper dinner in Praiano.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Il+Rifugio+dei+Peccatori&ftid=0x133b97cce562a477:0xbd92dabda15e9be3" target="_blank" rel="noopener">Il Rifugio dei Peccatori</a>
+        <span class="tag">Praiano</span>
+      </div>
+      <p>Little deli for panini and picnic supplies. Perfect before a beach day.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Franco's+Bar&ftid=0x133b976f25a71bbb:0x1d8af8e3c4e4ee77" target="_blank" rel="noopener">Franco's Bar</a>
+        <span class="tag">Positano</span>
+      </div>
+      <p>Drinks above the beach in Positano. Go for sunset.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Music+On+the+Rocks&ftid=0x133b97696391f439:0xc5a2c5d7188bb6ea" target="_blank" rel="noopener">Music on the Rocks</a>
+        <span class="tag">Positano</span>
+      </div>
+      <p>The club carved into the cliff at the end of the beach. For when the night keeps going.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Saraceno+d'Oro,+Viale+Pasitea+254,+Positano" target="_blank" rel="noopener">Saraceno d'Oro</a>
+        <span class="tag">Positano</span>
+      </div>
+      <p>Reliable Italian on Viale Pasitea, without Positano prices going silly.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Ristorante+Adamo+ed+Eva&ftid=0x133b976be33b44c5:0xd35892437e97741" target="_blank" rel="noopener">Ristorante Adamo ed Eva</a>
+        <span class="tag">Positano</span>
+      </div>
+      <p>The special occasion pick. Bring a full wallet and a view appetite.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Ristorante+Bruno&ftid=0x133b97694515b4d5:0x8ae4e9d5af578741" target="_blank" rel="noopener">Ristorante Bruno</a>
+        <span class="tag">Positano</span>
+      </div>
+      <p>Seafood on the road above the town.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.google.com/?q=Spiaggia+del+Lannio&ftid=0x133bea87a1025033:0x522902cbe3f6772" target="_blank" rel="noopener">Spiaggia del Lannio</a>
+        <span class="tag">Near Cetara</span>
+      </div>
+      <p>Public beach on the quieter eastern stretch of the coast.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=Mamma+Rosa,+Via+Fiera+Vecchia+41,+Salerno" target="_blank" rel="noopener">Mamma Rosa</a>
+        <span class="tag">Salerno</span>
+      </div>
+      <p>Southern Italian cooking in Salerno, at the far end of the coast.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Might be helpful, might not. Enjoy the south.</p>
+  </div>
+</footer>
+
+</body>
+</html>

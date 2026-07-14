@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mimmo List | London</title>
+<meta name="description" content="Where to eat and drink in London, according to Mimmo. Personal recommendations, no sponsors, no algorithms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F6F3;
+    --surface: #FFFFFF;
+    --ink: #111111;
+    --muted: #787774;
+    --border: #EAEAEA;
+    --pale-yellow: #FBF3DB;
+    --pale-yellow-ink: #956400;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  header {
+    padding: 96px 0 64px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(44px, 9vw, 68px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .tagline {
+    margin-top: 16px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 18px;
+  }
+  .disclaimer {
+    margin-top: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  nav {
+    margin-top: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0 14px;
+  }
+  nav a.active { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
+  nav a:hover { color: var(--ink); }
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .section-note {
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+  .place {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .place:last-child { border-bottom: none; }
+  .place-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .place-name {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    transition: border-color 0.2s;
+  }
+  .place-name:hover { border-color: var(--ink); }
+  .tag {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--pale-yellow);
+    color: var(--pale-yellow-ink);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+  .place p {
+    margin-top: 6px;
+    color: #2F3437;
+  }
+  .place p a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(0,0,0,0.25);
+  }
+  footer {
+    padding: 56px 0 80px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    font-style: italic;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>The Mimmo List</h1>
+    <p class="tagline">Where to eat and drink in London, according to Mimmo.</p>
+    <p class="disclaimer">All tried personally. No sponsors, no algorithms.</p>
+    <nav>
+      <a href="/" class="active">London</a>
+      <a href="/napoli">Napoli</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>The Local Classics</h2>
+    <p class="section-note">Start here if you want London on a plate.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/6Tz3oNtJmuaaMmXj9" target="_blank" rel="noopener">The Mayfair Chippy</a>
+        <span class="tag">Mayfair</span>
+      </div>
+      <p>One of the best fish and chips in town, and super central. Afterwards go for a drink or dessert at Mercato Mayfair next door, which is really cool.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/szwydNknk95jKxxM9" target="_blank" rel="noopener">M. Manze</a>
+        <span class="tag">Tower Bridge</span>
+      </div>
+      <p>Meat or eel pie. The most authentic one you will find, a short walk from Borough.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=The+Draper+Arms,+29+Barnsbury+Street,+London" target="_blank" rel="noopener">The Draper Arms</a>
+        <span class="tag">Islington</span>
+      </div>
+      <p>Proper neighbourhood pub with classic British food done well.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sunday Roast</h2>
+    <p class="section-note">To try on a Sunday. You might need to book well ahead.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/6b694aJ8VLSqESa56" target="_blank" rel="noopener">The Pig and Butcher</a>
+        <span class="tag">Islington</span>
+      </div>
+      <p>One of my favourites.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/hkzgYi9ZFiiGZZTZ6" target="_blank" rel="noopener">Quality Chop House</a>
+        <span class="tag">Farringdon</span>
+      </div>
+      <p>A classic. Worth the booking effort.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Steak</h2>
+    <p class="section-note">You have plenty of good steak in NYC, but if you fancy one here anyway.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://www.google.com/maps/search/Blacklock+London" target="_blank" rel="noopener">Blacklock</a>
+        <span class="tag">Several locations</span>
+      </div>
+      <p>Small independent chain, excellent steaks.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://www.google.com/maps/search/Hawksmoor+London" target="_blank" rel="noopener">Hawksmoor</a>
+        <span class="tag">Several locations</span>
+      </div>
+      <p>Same story. Small independent chain, excellent steaks.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://www.google.com/maps/search/Flat+Iron+London" target="_blank" rel="noopener">Flat Iron</a>
+        <span class="tag">Several locations</span>
+      </div>
+      <p>Some of the best value for money in town.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Bagels</h2>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/15jZ13qySnCGWMLfA" target="_blank" rel="noopener">Dirty Bagels</a>
+        <span class="tag">Spitalfields</span>
+      </div>
+      <p>Great pulled pork bagel if you are in Old Spitalfields Market.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/kJ7pwUE5PoeUDg6f7" target="_blank" rel="noopener">Beigel Bake</a>
+        <span class="tag">Brick Lane</span>
+      </div>
+      <p>The classic and historic bagel on Brick Lane.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Burgers</h2>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/xusqDTx5Yq6DrvPn8" target="_blank" rel="noopener">Black Bear Burger</a>
+        <span class="tag">Several locations</span>
+      </div>
+      <p>Best burger chain in town, I think. Many locations around the city.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Great Food, Great Value</h2>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/UHGrZEE1VKtMGrBe6" target="_blank" rel="noopener">Fatt Pundit</a>
+        <span class="tag">Covent Garden</span>
+      </div>
+      <p>Asian fusion, really good.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/Yhp3y18J9Vm5zwSJ7" target="_blank" rel="noopener">Mangal 1</a>
+        <span class="tag">Dalston</span>
+      </div>
+      <p>Maybe the best Turkish in town. A bit further out in the Hackney and Dalston area, worth the trip.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/XQwew5rC7tWnX6qz8" target="_blank" rel="noopener">Majang Dong</a>
+        <span class="tag">Soho</span>
+      </div>
+      <p>Korean BBQ in Soho.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/Ja6G3fbpxfL7v3Dc6" target="_blank" rel="noopener">Chill Since '93</a>
+        <span class="tag">Covent Garden</span>
+      </div>
+      <p>Amazing focaccia in Covent Garden.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/TPnkXyMhUtnjzKhj8" target="_blank" rel="noopener">BIBI'S</a>
+        <span class="tag">Soho</span>
+      </div>
+      <p>Best salad chain in town if you fancy some green.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/4MdLu87q7ty3aVN16" target="_blank" rel="noopener">House of MoMo</a>
+        <span class="tag">Dalston</span>
+      </div>
+      <p>Nepalese. Go for the momos.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sushi and Japanese</h2>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/wze6onYsK7K5a77r6" target="_blank" rel="noopener">Sushi Show</a>
+        <span class="tag">Shoreditch</span>
+      </div>
+      <p>One of the two Shoreditch picks. You cannot go wrong with either.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/VANnoG8VgJmjnWVRA" target="_blank" rel="noopener">Sanjugo</a>
+        <span class="tag">Shoreditch and Victoria</span>
+      </div>
+      <p>Some of the best sushi in town. The Victoria branch I have not tried yet, but I trust it.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pizza</h2>
+    <p class="section-note">So many options here. Ranked by my preference.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/oviKASYwM9tEDRH18" target="_blank" rel="noopener">L'Antica Pizzeria</a>
+        <span class="tag">Hampstead</span>
+      </div>
+      <p>Best pizza in town. Full stop.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/jD8Xc9xNUQS27RUdA" target="_blank" rel="noopener">Vasinikò</a>
+        <span class="tag">Covent Garden</span>
+      </div>
+      <p>If you are in the city centre, this is the best one in my opinion.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/v93k2GCFP45eQq3HA" target="_blank" rel="noopener">081 Pizzeria</a>
+        <span class="tag">Shoreditch</span>
+      </div>
+      <p>Best pizza in east London.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/xHZ5baDDEWEvmGoA9" target="_blank" rel="noopener">Old Spitalfields Market pizza</a>
+        <span class="tag">Spitalfields</span>
+      </div>
+      <p>Good pizza if you are already wandering the market.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pasta</h2>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/2qFLgnKZoHbhVyAG7" target="_blank" rel="noopener">Padella</a>
+        <span class="tag">Borough and Shoreditch</span>
+      </div>
+      <p>Expect a queue at Borough Market. It moves fast and it is worth it.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/sBENwXPQ3gMFQX2F8" target="_blank" rel="noopener">Manteca</a>
+        <span class="tag">Shoreditch</span>
+      </div>
+      <p>Proper pasta in Shoreditch.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fancy Dinner</h2>
+    <p class="section-note">For when you want to make an evening of it.</p>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/RNajvQMLKuK6ddSB9" target="_blank" rel="noopener">Luca</a>
+        <span class="tag">Clerkenwell</span>
+      </div>
+      <p>Italian, elegant, excellent.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/1FcseXpfHDKa6RXn8" target="_blank" rel="noopener">Bistrotheque</a>
+        <span class="tag">Bethnal Green</span>
+      </div>
+      <p>East London institution.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/wVfpkMiALmaiMoXYA" target="_blank" rel="noopener">Kiln</a>
+        <span class="tag">Soho</span>
+      </div>
+      <p>Thai, cooked over fire.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/gskgCsN9xkghY3vY7" target="_blank" rel="noopener">Studio Gauthier</a>
+        <span class="tag">Fitzrovia</span>
+      </div>
+      <p>Vegan restaurant, really good even if you are not.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/FzQ2LsTEctCHreoPA" target="_blank" rel="noopener">St. John</a>
+        <span class="tag">Smithfield</span>
+      </div>
+      <p>Good British contemporary cuisine. Their bistro, St. John Bread and Wine in Shoreditch, is also a great option.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/jqhg1GeT4jXERrAx8" target="_blank" rel="noopener">Scott's</a>
+        <span class="tag">Mayfair</span>
+      </div>
+      <p>Good fish dinner.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/JKPPq23rdUE5e9Pz6" target="_blank" rel="noopener">Ibai</a>
+        <span class="tag">Farringdon</span>
+      </div>
+      <p>Steak, but with good fish options too.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/pdMxwwBVrfHK5Far7" target="_blank" rel="noopener">Duck and Waffle</a>
+        <span class="tag">City</span>
+      </div>
+      <p>Brunch with a view, 40 floors up.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cocktails</h2>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/oy3JXCFNmUPttTds5" target="_blank" rel="noopener">Artesian</a>
+        <span class="tag">Marylebone</span>
+      </div>
+      <p>Just off Oxford Street. Great drinks, elegant setting.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/RjurrEw3Gwe4HA4g6" target="_blank" rel="noopener">Oriole</a>
+        <span class="tag">Smithfield</span>
+      </div>
+      <p>Worth going just for the room.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/iMY5gwTJbbkGegZf7" target="_blank" rel="noopener">Nightjar</a>
+        <span class="tag">Shoreditch</span>
+      </div>
+      <p>Often they have live music.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/hrGG9mHeRmwAe9io8" target="_blank" rel="noopener">Bar Termini</a>
+        <span class="tag">Soho</span>
+      </div>
+      <p>Try the Negroni. Ask for the bottle though.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Jazz</h2>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/hgCvstbg9GeX4Wn6A" target="_blank" rel="noopener">Jazz Cafe</a>
+        <span class="tag">Camden</span>
+      </div>
+      <p>One of the best jazz spots in town.</p>
+    </div>
+    <div class="place">
+      <div class="place-head">
+        <a class="place-name" href="https://maps.app.goo.gl/Mz2A5WJr6cJfQwy17" target="_blank" rel="noopener">The Effra Hall Tavern</a>
+        <span class="tag">Brixton</span>
+      </div>
+      <p>Jazz every Thursday and Sunday night. Very low key since it is a pub, and free, but great music.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Might be helpful, might not. Enjoy London.</p>
+  </div>
+</footer>
+
+</body>
+</html>
