@@ -39,7 +39,7 @@
   }
   h1 {
     font-family: 'Instrument Serif', serif;
-    font-weight: 400;
+    font-weight: 700;
     font-size: clamp(44px, 9vw, 68px);
     letter-spacing: -0.02em;
     line-height: 1.05;
@@ -79,7 +79,7 @@
   section:last-of-type { border-bottom: none; }
   h2 {
     font-family: 'Instrument Serif', serif;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 30px;
     letter-spacing: -0.02em;
     margin-bottom: 8px;
@@ -124,23 +124,6 @@
     margin-top: 6px;
     color: #2F3437;
   }
-  .maplink {
-    margin-top: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .maplink a {
-    color: var(--pale-blue-ink);
-    background: var(--pale-blue);
-    text-decoration: none;
-    border-radius: 9999px;
-    padding: 7px 16px;
-    display: inline-block;
-    transition: opacity 0.2s;
-  }
-  .maplink a:hover { opacity: 0.75; }
   .intro {
     max-width: 640px;
     margin: 0 auto;
@@ -149,6 +132,77 @@
   }
   .intro p { margin-bottom: 14px; }
   .intro p:last-child { margin-bottom: 0; }
+  .filters {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0 18px;
+  }
+  .filter-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .chip-track {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-row + .filter-row { margin-top: 10px; }
+  .filter-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    width: 44px;
+    flex-shrink: 0;
+  }
+  .chip {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .chip:hover { color: var(--ink); border-color: #D2D2D2; }
+  .chip[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .empty {
+    padding: 64px 0;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+  }
+  [hidden] { display: none !important; }
+  @media (max-width: 700px) {
+    .filters { padding: 12px 0 14px; }
+    .filter-row { align-items: center; gap: 8px; }
+    .filter-row + .filter-row { margin-top: 8px; }
+    .filter-label { width: 38px; }
+    .chip-track {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 24px;
+      margin-right: -24px;
+    }
+    .chip-track::-webkit-scrollbar { display: none; }
+    .chip { flex-shrink: 0; }
+  }
   footer {
     padding: 56px 0 80px;
     text-align: center;
@@ -170,35 +224,67 @@
       <a href="/">London</a>
       <a href="/napoli" class="active">Napoli</a>
     </nav>
-    <p class="maplink"><a href="https://www.google.com/maps/d/viewer?mid=1yL3_2QdKZvQgAfLQKTAviLtKXhxo3q-o" target="_blank" rel="noopener">Open the whole thing as a map</a></p>
   </div>
 </header>
 
 <div class="intro">
   <p>Everything below has been eaten, drunk, swum in or walked by me, most of it more than once. Nothing here is from a list, a ranking or a guidebook. If it is on this page it is because I went, and I would go back.</p>
-  <p>Every name links straight to its pin on Google Maps. The map link above opens all of it in one go, which is the easier option if you are already down there with a car.</p>
+  <p>Every name links straight to its pin on Google Maps. Use the filters to narrow it down by what you are after or by where you are.</p>
 </div>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="filter-row">
+      <span class="filter-label">What</span>
+      <div class="chip-track">
+        <button class="chip" data-group="cat" data-value="all" aria-pressed="true">Everything</button>
+        <button class="chip" data-group="cat" data-value="pizza" aria-pressed="false">Pizza</button>
+        <button class="chip" data-group="cat" data-value="fried-things-panini-and-cheese" aria-pressed="false">Street Food</button>
+        <button class="chip" data-group="cat" data-value="trattorie-and-traditional-cooking" aria-pressed="false">Trattorie</button>
+        <button class="chip" data-group="cat" data-value="seafood-and-long-lunches-by-the-water" aria-pressed="false">Seafood</button>
+        <button class="chip" data-group="cat" data-value="treat-yourself" aria-pressed="false">Treat Yourself</button>
+        <button class="chip" data-group="cat" data-value="coffee-pastries-and-gelato" aria-pressed="false">Coffee & Gelato</button>
+        <button class="chip" data-group="cat" data-value="drinks-aperitivo-and-late-nights" aria-pressed="false">Drinks</button>
+        <button class="chip" data-group="cat" data-value="beaches-and-swimming" aria-pressed="false">Beaches</button>
+        <button class="chip" data-group="cat" data-value="walks-and-viewpoints" aria-pressed="false">Walks & Views</button>
+        <button class="chip" data-group="cat" data-value="what-to-see" aria-pressed="false">Sights</button>
+        <button class="chip" data-group="cat" data-value="thermal-baths" aria-pressed="false">Terme</button>
+      </div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Where</span>
+      <div class="chip-track">
+        <button class="chip" data-group="area" data-value="all" aria-pressed="true">Everywhere</button>
+        <button class="chip" data-group="area" data-value="napoli" aria-pressed="false">Napoli</button>
+        <button class="chip" data-group="area" data-value="penisola" aria-pressed="false">Penisola Sorrentina</button>
+        <button class="chip" data-group="area" data-value="costiera" aria-pressed="false">Costiera Amalfitana</button>
+        <button class="chip" data-group="area" data-value="altrove" aria-pressed="false">Elsewhere</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <main class="wrap">
 
-  <section>
+  <section data-cat="pizza">
     <h2>Pizza</h2>
     <p class="section-note">The reason most people come. All of these are worth the queue.</p>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Gino%20e%20Toto%20Sorbillo/@40.8503936,14.2553743,17z" target="_blank" rel="noopener">Gino e Toto Sorbillo</a>
         <span class="tag">Centro Storico</span>
       </div>
       <p>The iconic one on Via dei Tribunali. Expect a queue, it is part of the experience.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Pizzeria%20Concettina%20ai%20Tre%20Santi/@40.8574388,14.2521269,17z" target="_blank" rel="noopener">Pizzeria Concettina ai Tre Santi</a>
         <span class="tag">Rione Sanità</span>
       </div>
       <p>Pizza in the Sanità, one of the most characterful districts in the city. Worth the trip up there on its own.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Pizzeria%20Pellone/@40.8561674,14.2741505,17z" target="_blank" rel="noopener">Pizzeria Pellone</a>
         <span class="tag">Via Nazionale</span>
@@ -207,45 +293,45 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="fried-things-panini-and-cheese">
     <h2>Fried Things, Panini and Cheese</h2>
     <p class="section-note">Napoli eats standing up. Do the same.</p>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/La%20Masardona/@40.8485039,14.2735084,17z" target="_blank" rel="noopener">La Masardona</a>
         <span class="tag">Centro</span>
       </div>
       <p>The home of the pizza fritta. Fried, folded, filled, and better than it has any right to be.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/La%20Frittura%20del%20Golfo/@40.6475493,14.7009525999999,17z" target="_blank" rel="noopener">La Frittura del Golfo</a>
         <span class="tag">Cetara</span>
       </div>
       <p>Best cuoppo fritto on the coast. Paper cone, fried fish, sea in front of you.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Tortora%20Panino%20Macelleria/@40.8475349,14.2322654,17z" target="_blank" rel="noopener">Tortora Panino Macelleria</a>
         <span class="tag">Vomero</span>
       </div>
       <p>Butcher and panino shop. Order at the counter and eat it on the street.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Caseificio%20Marigliano/@40.851536,14.271072,17z" target="_blank" rel="noopener">Caseificio Marigliano</a>
         <span class="tag">Centro</span>
       </div>
       <p>Mozzarella straight from the vasca. Buy it in the morning, eat it the same day.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/De%20Gennaro%20Pasquale/@40.6609923,14.4265683,17z" target="_blank" rel="noopener">De Gennaro Pasquale</a>
         <span class="tag">Vico Equense</span>
       </div>
       <p>Great salumeria where you can buy cured ham and other delicious products. Must try: the Provolone del Monaco, an amazing cheese which is the speciality of this area.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Il+Rifugio+dei+Peccatori&amp;amp;ftid=0x133b97cce562a477:0xbd92dabda15e9be3" target="_blank" rel="noopener">Il Rifugio dei Peccatori</a>
         <span class="tag">Praiano</span>
@@ -254,80 +340,80 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="trattorie-and-traditional-cooking">
     <h2>Trattorie and Traditional Cooking</h2>
     <p class="section-note">Where the food is honest and the bill is small.</p>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Trattoria%20Da%20Nennella/@40.841958,14.247522,17z" target="_blank" rel="noopener">Trattoria Da Nennella</a>
         <span class="tag">Quartieri Spagnoli</span>
       </div>
       <p>Chaotic, loud, cheap and completely brilliant. Go hungry and do not expect a quiet dinner.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Osteria%20della%20Mattonella/@40.8365941,14.2440668,17z" target="_blank" rel="noopener">Osteria della Mattonella</a>
         <span class="tag">Centro</span>
       </div>
       <p>Tiny old osteria with tiled walls and proper Neapolitan home cooking.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Stelluccia/@40.6126232,14.4078489,17z" target="_blank" rel="noopener">Stelluccia</a>
         <span class="tag">Casarlano, Sorrento</span>
       </div>
       <p>Typical trattoria that serves large and delicious plates of traditional handmade pasta. Satisfying and inexpensive.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/L%27Antico%20Scantinato/@40.6002015,14.3462327,17z" target="_blank" rel="noopener">L'Antico Scantinato</a>
         <span class="tag">Schiazzano, Massa Lubrense</span>
       </div>
       <p>Traditional cooking up in the hills at Schiazzano. Recommended.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Ristorante+da+Francesco&amp;amp;ftid=0x133b9d5a6a5de9b1:0xf78ef5a9cee85a17" target="_blank" rel="noopener">Ristorante da Francesco</a>
         <span class="tag">Schiazzano, Massa Lubrense</span>
       </div>
       <p>Proper local cooking in a tiny village, away from the crowds.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Eughenes&amp;amp;ftid=0x133b9c51a0105c3b:0x3f78297c7bb5080d" target="_blank" rel="noopener">Eughenes</a>
         <span class="tag">Massa Lubrense</span>
       </div>
       <p>A local favourite up in the hills of the peninsula.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Il+Ruttino&amp;amp;ftid=0x133b99462fc43899:0x5ce2a1663fa6423e" target="_blank" rel="noopener">Il Ruttino</a>
         <span class="tag">Sant'Agnello</span>
       </div>
       <p>Much loved trattoria near Sorrento. Book ahead.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Oasi/@40.6769802,14.437681,17z" target="_blank" rel="noopener">Oasi</a>
         <span class="tag">Seiano, Vico Equense</span>
       </div>
       <p>Great saltimbocca to pick up on the way home.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Agricola+Fore+Porta&amp;amp;ftid=0x133b95ba347a5d87:0x6ce2af7b61f6dbda" target="_blank" rel="noopener">Agricola Fore Porta</a>
         <span class="tag">Amalfi</span>
       </div>
       <p>Great genuine restaurant just off the Valle delle Ferriere. Highly recommend stopping after the hike before heading back down to Amalfi.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/?api=1&amp;amp;query=Saraceno+d%27Oro,+Viale+Pasitea+254,+Positano" target="_blank" rel="noopener">Saraceno d'Oro</a>
         <span class="tag">Positano</span>
       </div>
       <p>Reliable Italian on Viale Pasitea, without Positano prices going silly.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="altrove">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/?api=1&amp;amp;query=Mamma+Rosa,+Via+Fiera+Vecchia+41,+Salerno" target="_blank" rel="noopener">Mamma Rosa</a>
         <span class="tag">Salerno</span>
@@ -336,66 +422,66 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="seafood-and-long-lunches-by-the-water">
     <h2>Seafood and Long Lunches by the Water</h2>
     <p class="section-note">Book the late table and give the afternoon up to it.</p>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Taverna%20del%20Capitano/@40.5834639,14.3565377,17z" target="_blank" rel="noopener">Taverna del Capitano</a>
         <span class="tag">Marina del Cantone</span>
       </div>
       <p>The serious one on the bay. Michelin star, but the setting does half the work.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Ristorante%20il%20Cantuccio/@40.5834457,14.3584942,17z" target="_blank" rel="noopener">Ristorante il Cantuccio</a>
         <span class="tag">Nerano</span>
       </div>
       <p>Great spot for a fish meal looking straight out at the water.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Mary%27s%20Beach/@40.5832381,14.3562823,17z" target="_blank" rel="noopener">Mary's Beach</a>
         <span class="tag">Marina del Cantone</span>
       </div>
       <p>Nice beach club with a really good restaurant attached. Worth a stop.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Ristorante%20Mustaf%C3%A0/@40.6603322,14.419038,17z" target="_blank" rel="noopener">Ristorante Mustafà</a>
         <span class="tag">Vico Equense</span>
       </div>
       <p>Good fish restaurant with a sea view.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/?api=1&amp;amp;query=Trattoria+da+Maria+Grazia,+Via+Marina+di+Puolo+47,+Sorrento" target="_blank" rel="noopener">Trattoria da Maria Grazia</a>
         <span class="tag">Marina di Puolo</span>
       </div>
       <p>Trattoria on the little beach at Marina di Puolo.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Ristorante+Don+Vito&amp;amp;ftid=0x133b9e9c9006850d:0xa611639be6e6ec0f" target="_blank" rel="noopener">Ristorante Don Vito</a>
         <span class="tag">Marina di Puolo</span>
       </div>
       <p>Seafront dining on the same bay.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Ristorante+St.+Raphael&amp;amp;ftid=0x133b9fafd408cc51:0x6590022a19431cba" target="_blank" rel="noopener">Ristorante St. Raphael</a>
         <span class="tag">Marina di Puolo</span>
       </div>
       <p>Bar and restaurant right by the water. Good for a long lunch.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Ristorante+Bruno&amp;amp;ftid=0x133b97694515b4d5:0x8ae4e9d5af578741" target="_blank" rel="noopener">Ristorante Bruno</a>
         <span class="tag">Positano</span>
       </div>
       <p>Seafood on the road above the town.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="altrove">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Acqua+%26+Sale&amp;amp;ftid=0x133bbc7b5a0ad51d:0x6f5cb332afda602b" target="_blank" rel="noopener">Acqua &amp; Sale</a>
         <span class="tag">Scafati, near Pompei</span>
@@ -404,24 +490,24 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="treat-yourself">
     <h2>Treat Yourself</h2>
     <p class="section-note">For the one dinner you are willing to overspend on.</p>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Don%20Alfonso%201890/@40.608024,14.373799,17z" target="_blank" rel="noopener">Don Alfonso 1890</a>
         <span class="tag">Sant'Agata sui Due Golfi</span>
       </div>
       <p>In the heart of Sant'Agata there is a gem of Mediterranean cuisine. Two Michelin stars and totally worth it for the experience. Highly recommended if you want to treat yourself.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Ristorante+Adamo+ed+Eva&amp;amp;ftid=0x133b976be33b44c5:0xd35892437e97741" target="_blank" rel="noopener">Ristorante Adamo ed Eva</a>
         <span class="tag">Positano</span>
       </div>
       <p>The special occasion pick. Bring a full wallet and an appetite for the view.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Kasai&amp;amp;ftid=0x133b96daa1ee1a0f:0xf4c06248f051cdf9" target="_blank" rel="noopener">Kasai</a>
         <span class="tag">Praiano</span>
@@ -430,101 +516,101 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="coffee-pastries-and-gelato">
     <h2>Coffee, Pastries and Gelato</h2>
     <p class="section-note">The part of the day Napoli takes most seriously.</p>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Bar%20Mexico%201959/@40.8480148,14.253516,17z" target="_blank" rel="noopener">Bar Mexico 1959</a>
         <span class="tag">Piazza Dante</span>
       </div>
       <p>Every Bar Mexico serves the best coffee in town, made with the Passalacqua blend. If you see the Mexico sign, stop and have a proper espresso.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Bar%20Nilo/@40.8487145,14.2563483,17z" target="_blank" rel="noopener">Bar Nilo</a>
         <span class="tag">Spaccanapoli</span>
       </div>
       <p>If you are a football fan, stop for an espresso. Inside this little cafe there are piles of SSC Napoli mementos, including a holy lock of hair which apparently belonged to Diego Armando Maradona.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Caff%C3%A8%20del%20Professore/@40.8374337,14.2484904,17z" target="_blank" rel="noopener">Caffè del Professore</a>
         <span class="tag">Piazza Trieste e Trento</span>
       </div>
       <p>Great coffee. Ask for the caffè alla nocciola.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Gran%20Caff%C3%A8%20Gambrinus/@40.8367669,14.2484674,17z" target="_blank" rel="noopener">Gran Caffè Gambrinus</a>
         <span class="tag">Piazza Trieste e Trento</span>
       </div>
       <p>Historic and iconic bar, worth a visit for the rooms alone. Get the actual coffee next door, it is better.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Pintauro/@40.8393062,14.2483,17z" target="_blank" rel="noopener">Pintauro</a>
         <span class="tag">Via Toledo</span>
       </div>
       <p>One of the best sfogliatelle in town. Eat it hot, standing up.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Sfogliatella%20Mary/@40.8385391,14.2485202,17z" target="_blank" rel="noopener">Sfogliatella Mary</a>
         <span class="tag">Galleria Umberto I</span>
       </div>
       <p>Stop here for a classic babà.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Chalet%20Ciro/@40.8264994,14.2201961000001,17z" target="_blank" rel="noopener">Chalet Ciro</a>
         <span class="tag">Mergellina</span>
       </div>
       <p>Look for the graffa, the Neapolitan version of a doughnut.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="altrove">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Dolce%20Erminio/@40.7450125,14.6152848,17z" target="_blank" rel="noopener">Dolce Erminio</a>
         <span class="tag">Pagani</span>
       </div>
       <p>Best zeppola ever. A late night treat, as the shop only opens at night to supply half the bars in the area with its zeppole and pastries.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Pasticceria%20Sal%20De%20Riso/@40.6495274,14.6270957,17z" target="_blank" rel="noopener">Pasticceria Sal De Riso</a>
         <span class="tag">Minori</span>
       </div>
       <p>Famous pasticceria with all the typical cakes and pastries. A bit costly, but worth tasting.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Gelateria%20Primavera/@40.6260575,14.3749205,17z" target="_blank" rel="noopener">Gelateria Primavera</a>
         <span class="tag">Sorrento</span>
       </div>
       <p>One of the best gelati I have ever tried.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Gelateria%20Gabriele/@40.6620924,14.4263218,17z" target="_blank" rel="noopener">Gelateria Gabriele</a>
         <span class="tag">Vico Equense</span>
       </div>
       <p>Great gelato, and some fantastic cakes and sweets as well. Must try.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="altrove">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Lucrezio%20Caf%C3%A8/@40.7992185,14.1819062,17z" target="_blank" rel="noopener">Lucrezio Cafè</a>
         <span class="tag">Lucrino, Pozzuoli</span>
       </div>
       <p>Coffee stop out in the Campi Flegrei, on the way to Baia or Bacoli.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Bar+Sport&amp;amp;ftid=0x133b9c3a6ff9896f:0x3fcd3f384fce1cef" target="_blank" rel="noopener">Bar Sport</a>
         <span class="tag">Massa Lubrense</span>
       </div>
       <p>The classic village bar. Coffee, pastries, a few euros well spent.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Grace+Kitchen+Bar&amp;amp;ftid=0x133b9c3017235775:0x7f173e3f1fad003b" target="_blank" rel="noopener">Grace Kitchen Bar</a>
         <span class="tag">Massa Lubrense</span>
@@ -533,87 +619,87 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="drinks-aperitivo-and-late-nights">
     <h2>Drinks, Aperitivo and Late Nights</h2>
     <p class="section-note">From a two euro spritz on the steps to a twenty euro cocktail on a cliff.</p>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Piazza%20Bellini/@40.8502735,14.2520509,17z" target="_blank" rel="noopener">Piazza Bellini</a>
         <span class="tag">Centro Storico</span>
       </div>
       <p>Not a bar, a square. Everyone spills out onto the steps with a drink. Start here.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Baretti%20San%20Pasquale/@40.8347986,14.2402982,17z" target="_blank" rel="noopener">Baretti San Pasquale</a>
         <span class="tag">Chiaia</span>
       </div>
       <p>Head there for drinks. Chiaia's version of the same idea, a bit smarter.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/L%27Antiquario/@40.8329436,14.2422276,17z" target="_blank" rel="noopener">L'Antiquario</a>
         <span class="tag">Chiaia</span>
       </div>
       <p>Proper cocktail bar hidden down a side street. Dark, small, very good.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Barrio%20Botanico/@40.8408994,14.2525641,17z" target="_blank" rel="noopener">Barrio Botanico</a>
         <span class="tag">Municipio</span>
       </div>
       <p>Plants, cocktails and a young crowd near Piazza Municipio.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Fonoteca/@40.8430234,14.233843,17z" target="_blank" rel="noopener">Fonoteca</a>
         <span class="tag">Vomero</span>
       </div>
       <p>Record shop and bar in one. Drinks, vinyl and a good crowd up in the Vomero.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="altrove">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Largo%20Campo/@40.6795789,14.7558996,17z" target="_blank" rel="noopener">Largo Campo</a>
         <span class="tag">Salerno</span>
       </div>
       <p>Nice spot if you are after pubs, food or a cocktail bar. Very cheap, good food and good vibes.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Angelo%27s%20Snack%20and%20Drink/@40.6090134,14.3351392,17z" target="_blank" rel="noopener">Angelo's Snack and Drink</a>
         <span class="tag">Marina della Lobra</span>
       </div>
       <p>Great for an aperitivo at sunset overlooking the little harbour at Marina della Lobra.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Bar+Orlando&amp;amp;ftid=0x133b9c08b5d4a6f7:0x95a32c4d4af35b8b" target="_blank" rel="noopener">Bar Orlando</a>
         <span class="tag">Sant'Agata sui Due Golfi</span>
       </div>
       <p>Village bar in Sant'Agata. Great value, great people watching.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Grand%20Hotel%20Cocumella/@40.6325454,14.3900699,17z" target="_blank" rel="noopener">Grand Hotel Cocumella</a>
         <span class="tag">Sant'Agnello</span>
       </div>
       <p>Stop here for a cocktail. The terrace is one of the best on the coast.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Hotel%20Plaza/@40.625414,14.3760881,17z" target="_blank" rel="noopener">Hotel Plaza</a>
         <span class="tag">Sorrento</span>
       </div>
       <p>Nice rooftop cocktail bar. Fair prices, great service and cocktails, and the view is really good.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Franco%27s%20Bar/@40.6286336,14.487972,17z" target="_blank" rel="noopener">Franco's Bar</a>
         <span class="tag">Positano</span>
       </div>
       <p>Perhaps the most instagrammable place in Positano. Fancy cocktail bar with a beautiful view. Worth a visit, and budget about 20 euro a cocktail.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Music+On+the+Rocks&amp;amp;ftid=0x133b97696391f439:0xc5a2c5d7188bb6ea" target="_blank" rel="noopener">Music on the Rocks</a>
         <span class="tag">Positano</span>
@@ -622,59 +708,59 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="beaches-and-swimming">
     <h2>Beaches and Swimming</h2>
     <p class="section-note">Most of these need a walk, a car park or both. That is exactly why they are still good.</p>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Bagni%20Regina%20Giovanna/@40.6341102,14.3516186,17z" target="_blank" rel="noopener">Bagni Regina Giovanna</a>
         <span class="tag">Sorrento</span>
       </div>
       <p>Great public bathing spot, which is rare in the Sorrento peninsula. There is a car park at the top and from there it is a 10 to 15 minute walk down the path.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Cala%20di%20Puolo/@40.6267135,14.3465962,17z" target="_blank" rel="noopener">Cala di Puolo</a>
         <span class="tag">Marina di Puolo</span>
       </div>
       <p>Nice, accessible and serviced beach. The first car park under the olive trees is 5 euro for the day and they run a shuttle down to the beach and back. If you prefer walking it is a short 7 minute walk downhill, uphill on the way back but nothing serious. From the same car park you can also reach the scogliera di Pignatella, which is rocky but really nice too.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Bagni%20Tina/@40.6398281,14.4030971,17z" target="_blank" rel="noopener">Bagni Tina</a>
         <span class="tag">Marina di Cassano</span>
       </div>
       <p>Nice beach club in the bay at Marina di Cassano. Quiet and beautiful.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Cala%20di%20Mitigliano/@40.585832,14.327577,17z" target="_blank" rel="noopener">Cala di Mitigliano</a>
         <span class="tag">Termini, Massa Lubrense</span>
       </div>
       <p>Great and accessible, the car park is very close. Not the most comfortable but absolutely worth it.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Baia%20delle%20Sirene/@40.5886079,14.3228728,17z" target="_blank" rel="noopener">Baia delle Sirene</a>
         <span class="tag">Massa Lubrense</span>
       </div>
       <p>Small bay on the Punta Campanella side of the peninsula.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Spiaggia%20La%20Perla/@40.5805825,14.3501155,17z" target="_blank" rel="noopener">Spiaggia La Perla</a>
         <span class="tag">Nerano</span>
       </div>
       <p>Such crystalline water. Tiny beach but great.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Baia%20di%20Ieranto/@40.5741033,14.3407524,17z" target="_blank" rel="noopener">Baia di Ieranto</a>
         <span class="tag">Nerano</span>
       </div>
       <p>A 30 to 40 minute hike to get there but totally worth it. You cannot reach the bay by motorboat any more so the path is the only way in. Absolutely amazing. Park in the centre of Nerano and start from there. A must see if you are in the area.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://maps.google.com/?q=Spiaggia+del+Lannio&amp;amp;ftid=0x133bea87a1025033:0x522902cbe3f6772" target="_blank" rel="noopener">Spiaggia del Lannio</a>
         <span class="tag">Near Cetara</span>
@@ -683,31 +769,31 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="walks-and-viewpoints">
     <h2>Walks and Viewpoints</h2>
     <p class="section-note">Do the walk in the morning. The coast gets hot and the light gets flat.</p>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Sentiero%20degli%20Dei/@40.6248243,14.5172149,17z" target="_blank" rel="noopener">Sentiero degli Dei</a>
         <span class="tag">Agerola to Nocelle</span>
       </div>
       <p>The Path of the Gods, and the walk of the trip. Beautiful and breathtaking, and you do have to climb up there. Start from Bomerano and finish in Nocelle above Positano.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Belvedere%20di%20Sant%27Antonio%20a%20Posillipo/@40.8281025,14.2181932999999,17z" target="_blank" rel="noopener">Belvedere di Sant'Antonio a Posillipo</a>
         <span class="tag">Posillipo</span>
       </div>
       <p>Best view of the city from this amazing viewpoint.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Belvedere%20dei%20Due%20Golfi/@40.6105012,14.3646549,17z" target="_blank" rel="noopener">Belvedere dei Due Golfi</a>
         <span class="tag">Sant'Agata sui Due Golfi</span>
       </div>
       <p>Amazing place to take in both gulfs at once.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Terrazza%20dell%27Infinito/@40.6420928,14.6101953,17z" target="_blank" rel="noopener">Terrazza dell'Infinito</a>
         <span class="tag">Villa Cimbrone, Ravello</span>
@@ -716,31 +802,31 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="what-to-see">
     <h2>What to See</h2>
     <p class="section-note">The four that are actually worth the queue and the entry fee.</p>
-    <div class="place">
+    <div class="place" data-area="altrove">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Scavi%20di%20Pompei/@40.748208,14.4871581,17z" target="_blank" rel="noopener">Scavi di Pompei</a>
         <span class="tag">Pompei</span>
       </div>
       <p>The ancient ruins of Pompei, a Roman city buried by the volcano in its last eruption. A must see of the area.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Certosa%20e%20Museo%20di%20San%20Martino/@40.8434089,14.2410864999999,17z" target="_blank" rel="noopener">Certosa e Museo di San Martino</a>
         <span class="tag">Vomero</span>
       </div>
       <p>Charterhouse above the city with the best terrace in Napoli attached to it.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="napoli">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Teatro%20di%20San%20Carlo/@40.8374847,14.2496378,17z" target="_blank" rel="noopener">Teatro di San Carlo</a>
         <span class="tag">Centro</span>
       </div>
       <p>The oldest working opera house in Europe. Take the tour if you cannot get a ticket.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="costiera">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Duomo%20di%20Amalfi/@40.6344776,14.6031319,17z" target="_blank" rel="noopener">Duomo di Amalfi</a>
         <span class="tag">Amalfi</span>
@@ -749,17 +835,17 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="thermal-baths">
     <h2>Thermal Baths</h2>
     <p class="section-note">The whole bay sits on a volcano. Use it.</p>
-    <div class="place">
+    <div class="place" data-area="penisola">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Terme%20Scrajo/@40.6721027,14.4351564,17z" target="_blank" rel="noopener">Terme Scrajo</a>
         <span class="tag">Vico Equense</span>
       </div>
       <p>Sulphur springs right on the water between Vico Equense and Sorrento.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="altrove">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Park%20Resort%20%26%20Spa%20Castiglione/@40.7472436,13.9266267,17z" target="_blank" rel="noopener">Park Resort &amp; Spa Castiglione</a>
         <span class="tag">Ischia</span>
@@ -768,6 +854,8 @@
     </div>
   </section>
 
+  <p class="empty" id="empty" hidden>Nothing matches that combination. Try widening it.</p>
+
 </main>
 
 <footer>
@@ -775,6 +863,46 @@
     <p>Might be helpful, might not. Enjoy the south.</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('.chip');
+  var sections = document.querySelectorAll('main section');
+  var empty = document.getElementById('empty');
+  var state = { cat: 'all', area: 'all' };
+
+  function apply() {
+    var shown = 0;
+    sections.forEach(function (section) {
+      var catOk = state.cat === 'all' || section.dataset.cat === state.cat;
+      var visible = 0;
+      section.querySelectorAll('.place').forEach(function (place) {
+        var areas = (place.dataset.area || '').split(' ');
+        var areaOk = state.area === 'all' || areas.indexOf(state.area) > -1;
+        var ok = catOk && areaOk;
+        place.hidden = !ok;
+        if (ok) visible++;
+      });
+      section.hidden = visible === 0;
+      shown += visible;
+    });
+    empty.hidden = shown > 0;
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var group = chip.dataset.group;
+      state[group] = chip.dataset.value;
+      document.querySelectorAll('.chip[data-group="' + group + '"]').forEach(function (c) {
+        c.setAttribute('aria-pressed', String(c === chip));
+      });
+      apply();
+    });
+  });
+
+  apply();
+})();
+</script>
 
 </body>
 </html>

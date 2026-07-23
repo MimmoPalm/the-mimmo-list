@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Mimmo List | London</title>
-<meta name="description" content="Where to eat and drink in London, according to Mimmo. Personal recommendations, no sponsors, no algorithms.">
+<meta name="description" content="Where to eat and drink in London, according to Mimmo. Every single place personally tried and tested. No sponsors.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
   }
   h1 {
     font-family: 'Instrument Serif', serif;
-    font-weight: 400;
+    font-weight: 700;
     font-size: clamp(44px, 9vw, 68px);
     letter-spacing: -0.02em;
     line-height: 1.05;
@@ -79,7 +79,7 @@
   section:last-of-type { border-bottom: none; }
   h2 {
     font-family: 'Instrument Serif', serif;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 30px;
     letter-spacing: -0.02em;
     margin-bottom: 8px;
@@ -129,6 +129,77 @@
     text-decoration: underline;
     text-decoration-color: rgba(0,0,0,0.25);
   }
+  .filters {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0 18px;
+  }
+  .filter-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .chip-track {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-row + .filter-row { margin-top: 10px; }
+  .filter-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    width: 44px;
+    flex-shrink: 0;
+  }
+  .chip {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .chip:hover { color: var(--ink); border-color: #D2D2D2; }
+  .chip[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .empty {
+    padding: 64px 0;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+  }
+  [hidden] { display: none !important; }
+  @media (max-width: 700px) {
+    .filters { padding: 12px 0 14px; }
+    .filter-row { align-items: center; gap: 8px; }
+    .filter-row + .filter-row { margin-top: 8px; }
+    .filter-label { width: 38px; }
+    .chip-track {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 24px;
+      margin-right: -24px;
+    }
+    .chip-track::-webkit-scrollbar { display: none; }
+    .chip { flex-shrink: 0; }
+  }
   footer {
     padding: 56px 0 80px;
     text-align: center;
@@ -153,26 +224,61 @@
   </div>
 </header>
 
+<div class="filters">
+  <div class="wrap">
+    <div class="filter-row">
+      <span class="filter-label">What</span>
+      <div class="chip-track">
+        <button class="chip" data-group="cat" data-value="all" aria-pressed="true">Everything</button>
+        <button class="chip" data-group="cat" data-value="the-local-classics" aria-pressed="false">Classics</button>
+        <button class="chip" data-group="cat" data-value="sunday-roast" aria-pressed="false">Roast</button>
+        <button class="chip" data-group="cat" data-value="steak" aria-pressed="false">Steak</button>
+        <button class="chip" data-group="cat" data-value="bagels" aria-pressed="false">Bagels</button>
+        <button class="chip" data-group="cat" data-value="burgers" aria-pressed="false">Burgers</button>
+        <button class="chip" data-group="cat" data-value="great-food-great-value" aria-pressed="false">Great Value</button>
+        <button class="chip" data-group="cat" data-value="sushi-and-japanese" aria-pressed="false">Sushi</button>
+        <button class="chip" data-group="cat" data-value="pizza" aria-pressed="false">Pizza</button>
+        <button class="chip" data-group="cat" data-value="pasta" aria-pressed="false">Pasta</button>
+        <button class="chip" data-group="cat" data-value="fancy-dinner" aria-pressed="false">Fancy</button>
+        <button class="chip" data-group="cat" data-value="cocktails" aria-pressed="false">Cocktails</button>
+        <button class="chip" data-group="cat" data-value="jazz" aria-pressed="false">Jazz</button>
+      </div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Where</span>
+      <div class="chip-track">
+        <button class="chip" data-group="area" data-value="all" aria-pressed="true">Everywhere</button>
+        <button class="chip" data-group="area" data-value="central" aria-pressed="false">Central</button>
+        <button class="chip" data-group="area" data-value="city" aria-pressed="false">City &amp; Clerkenwell</button>
+        <button class="chip" data-group="area" data-value="east" aria-pressed="false">East</button>
+        <button class="chip" data-group="area" data-value="north" aria-pressed="false">North</button>
+        <button class="chip" data-group="area" data-value="south" aria-pressed="false">South</button>
+        <button class="chip" data-group="area" data-value="allover" aria-pressed="false">All over</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <main class="wrap">
 
-  <section>
+  <section data-cat="the-local-classics">
     <h2>The Local Classics</h2>
     <p class="section-note">Start here if you want London on a plate.</p>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/6Tz3oNtJmuaaMmXj9" target="_blank" rel="noopener">The Mayfair Chippy</a>
         <span class="tag">Mayfair</span>
       </div>
       <p>One of the best fish and chips in town, and super central. Afterwards go for a drink or dessert at Mercato Mayfair next door, which is really cool.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="south">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/szwydNknk95jKxxM9" target="_blank" rel="noopener">M. Manze</a>
         <span class="tag">Tower Bridge</span>
       </div>
       <p>Meat or eel pie. The most authentic one you will find, a short walk from Borough.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="north">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/?api=1&query=The+Draper+Arms,+29+Barnsbury+Street,+London" target="_blank" rel="noopener">The Draper Arms</a>
         <span class="tag">Islington</span>
@@ -181,17 +287,17 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="sunday-roast">
     <h2>Sunday Roast</h2>
     <p class="section-note">To try on a Sunday. You might need to book well ahead.</p>
-    <div class="place">
+    <div class="place" data-area="north">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/6b694aJ8VLSqESa56" target="_blank" rel="noopener">The Pig and Butcher</a>
         <span class="tag">Islington</span>
       </div>
       <p>One of my favourites.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="city">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/hkzgYi9ZFiiGZZTZ6" target="_blank" rel="noopener">Quality Chop House</a>
         <span class="tag">Farringdon</span>
@@ -200,24 +306,24 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="steak">
     <h2>Steak</h2>
     <p class="section-note">You have plenty of good steak in NYC, but if you fancy one here anyway.</p>
-    <div class="place">
+    <div class="place" data-area="allover">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Blacklock+London" target="_blank" rel="noopener">Blacklock</a>
         <span class="tag">Several locations</span>
       </div>
       <p>Small independent chain, excellent steaks.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="allover">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Hawksmoor+London" target="_blank" rel="noopener">Hawksmoor</a>
         <span class="tag">Several locations</span>
       </div>
       <p>Same story. Small independent chain, excellent steaks.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="allover">
       <div class="place-head">
         <a class="place-name" href="https://www.google.com/maps/search/Flat+Iron+London" target="_blank" rel="noopener">Flat Iron</a>
         <span class="tag">Several locations</span>
@@ -226,16 +332,16 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="bagels">
     <h2>Bagels</h2>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/15jZ13qySnCGWMLfA" target="_blank" rel="noopener">Dirty Bagels</a>
         <span class="tag">Spitalfields</span>
       </div>
       <p>Great pulled pork bagel if you are in Old Spitalfields Market.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/kJ7pwUE5PoeUDg6f7" target="_blank" rel="noopener">Beigel Bake</a>
         <span class="tag">Brick Lane</span>
@@ -244,9 +350,9 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="burgers">
     <h2>Burgers</h2>
-    <div class="place">
+    <div class="place" data-area="allover">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/xusqDTx5Yq6DrvPn8" target="_blank" rel="noopener">Black Bear Burger</a>
         <span class="tag">Several locations</span>
@@ -255,44 +361,44 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="great-food-great-value">
     <h2>Great Food, Great Value</h2>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/UHGrZEE1VKtMGrBe6" target="_blank" rel="noopener">Fatt Pundit</a>
         <span class="tag">Covent Garden</span>
       </div>
       <p>Asian fusion, really good.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/Yhp3y18J9Vm5zwSJ7" target="_blank" rel="noopener">Mangal 1</a>
         <span class="tag">Dalston</span>
       </div>
       <p>Maybe the best Turkish in town. A bit further out in the Hackney and Dalston area, worth the trip.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/XQwew5rC7tWnX6qz8" target="_blank" rel="noopener">Majang Dong</a>
         <span class="tag">Soho</span>
       </div>
       <p>Korean BBQ in Soho.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/Ja6G3fbpxfL7v3Dc6" target="_blank" rel="noopener">Chill Since '93</a>
         <span class="tag">Covent Garden</span>
       </div>
       <p>Amazing focaccia in Covent Garden.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/TPnkXyMhUtnjzKhj8" target="_blank" rel="noopener">BIBI'S</a>
         <span class="tag">Soho</span>
       </div>
       <p>Best salad chain in town if you fancy some green.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/4MdLu87q7ty3aVN16" target="_blank" rel="noopener">House of MoMo</a>
         <span class="tag">Dalston</span>
@@ -301,16 +407,16 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="sushi-and-japanese">
     <h2>Sushi and Japanese</h2>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/wze6onYsK7K5a77r6" target="_blank" rel="noopener">Sushi Show</a>
         <span class="tag">Shoreditch</span>
       </div>
       <p>One of the two Shoreditch picks. You cannot go wrong with either.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/VANnoG8VgJmjnWVRA" target="_blank" rel="noopener">Sanjugo</a>
         <span class="tag">Shoreditch and Victoria</span>
@@ -319,31 +425,31 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="pizza">
     <h2>Pizza</h2>
     <p class="section-note">So many options here. Ranked by my preference.</p>
-    <div class="place">
+    <div class="place" data-area="north">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/oviKASYwM9tEDRH18" target="_blank" rel="noopener">L'Antica Pizzeria</a>
         <span class="tag">Hampstead</span>
       </div>
       <p>Best pizza in town. Full stop.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/jD8Xc9xNUQS27RUdA" target="_blank" rel="noopener">Vasinikò</a>
         <span class="tag">Covent Garden</span>
       </div>
       <p>If you are in the city centre, this is the best one in my opinion.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/v93k2GCFP45eQq3HA" target="_blank" rel="noopener">081 Pizzeria</a>
         <span class="tag">Shoreditch</span>
       </div>
       <p>Best pizza in east London.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/xHZ5baDDEWEvmGoA9" target="_blank" rel="noopener">Old Spitalfields Market pizza</a>
         <span class="tag">Spitalfields</span>
@@ -352,16 +458,16 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="pasta">
     <h2>Pasta</h2>
-    <div class="place">
+    <div class="place" data-area="east south">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/2qFLgnKZoHbhVyAG7" target="_blank" rel="noopener">Padella</a>
         <span class="tag">Borough and Shoreditch</span>
       </div>
       <p>Expect a queue at Borough Market. It moves fast and it is worth it.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/sBENwXPQ3gMFQX2F8" target="_blank" rel="noopener">Manteca</a>
         <span class="tag">Shoreditch</span>
@@ -370,59 +476,59 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="fancy-dinner">
     <h2>Fancy Dinner</h2>
     <p class="section-note">For when you want to make an evening of it.</p>
-    <div class="place">
+    <div class="place" data-area="city">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/RNajvQMLKuK6ddSB9" target="_blank" rel="noopener">Luca</a>
         <span class="tag">Clerkenwell</span>
       </div>
       <p>Italian, elegant, excellent.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/1FcseXpfHDKa6RXn8" target="_blank" rel="noopener">Bistrotheque</a>
         <span class="tag">Bethnal Green</span>
       </div>
       <p>East London institution.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/wVfpkMiALmaiMoXYA" target="_blank" rel="noopener">Kiln</a>
         <span class="tag">Soho</span>
       </div>
       <p>Thai, cooked over fire.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/gskgCsN9xkghY3vY7" target="_blank" rel="noopener">Studio Gauthier</a>
         <span class="tag">Fitzrovia</span>
       </div>
       <p>Vegan restaurant, really good even if you are not.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="city">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/FzQ2LsTEctCHreoPA" target="_blank" rel="noopener">St. John</a>
         <span class="tag">Smithfield</span>
       </div>
       <p>Good British contemporary cuisine. Their bistro, St. John Bread and Wine in Shoreditch, is also a great option.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/jqhg1GeT4jXERrAx8" target="_blank" rel="noopener">Scott's</a>
         <span class="tag">Mayfair</span>
       </div>
       <p>Good fish dinner.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="city">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/JKPPq23rdUE5e9Pz6" target="_blank" rel="noopener">Ibai</a>
         <span class="tag">Farringdon</span>
       </div>
       <p>Steak, but with good fish options too.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="city">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/pdMxwwBVrfHK5Far7" target="_blank" rel="noopener">Duck and Waffle</a>
         <span class="tag">City</span>
@@ -431,30 +537,30 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="cocktails">
     <h2>Cocktails</h2>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/oy3JXCFNmUPttTds5" target="_blank" rel="noopener">Artesian</a>
         <span class="tag">Marylebone</span>
       </div>
       <p>Just off Oxford Street. Great drinks, elegant setting.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="city">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/RjurrEw3Gwe4HA4g6" target="_blank" rel="noopener">Oriole</a>
         <span class="tag">Smithfield</span>
       </div>
       <p>Worth going just for the room.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="east">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/iMY5gwTJbbkGegZf7" target="_blank" rel="noopener">Nightjar</a>
         <span class="tag">Shoreditch</span>
       </div>
       <p>Often they have live music.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="central">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/hrGG9mHeRmwAe9io8" target="_blank" rel="noopener">Bar Termini</a>
         <span class="tag">Soho</span>
@@ -463,16 +569,16 @@
     </div>
   </section>
 
-  <section>
+  <section data-cat="jazz">
     <h2>Jazz</h2>
-    <div class="place">
+    <div class="place" data-area="north">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/hgCvstbg9GeX4Wn6A" target="_blank" rel="noopener">Jazz Cafe</a>
         <span class="tag">Camden</span>
       </div>
       <p>One of the best jazz spots in town.</p>
     </div>
-    <div class="place">
+    <div class="place" data-area="south">
       <div class="place-head">
         <a class="place-name" href="https://maps.app.goo.gl/Mz2A5WJr6cJfQwy17" target="_blank" rel="noopener">The Effra Hall Tavern</a>
         <span class="tag">Brixton</span>
@@ -481,6 +587,8 @@
     </div>
   </section>
 
+  <p class="empty" id="empty" hidden>Nothing matches that combination. Try widening it.</p>
+
 </main>
 
 <footer>
@@ -488,6 +596,46 @@
     <p>Might be helpful, might not. Enjoy London.</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('.chip');
+  var sections = document.querySelectorAll('main section');
+  var empty = document.getElementById('empty');
+  var state = { cat: 'all', area: 'all' };
+
+  function apply() {
+    var shown = 0;
+    sections.forEach(function (section) {
+      var catOk = state.cat === 'all' || section.dataset.cat === state.cat;
+      var visible = 0;
+      section.querySelectorAll('.place').forEach(function (place) {
+        var areas = (place.dataset.area || '').split(' ');
+        var areaOk = state.area === 'all' || areas.indexOf(state.area) > -1;
+        var ok = catOk && areaOk;
+        place.hidden = !ok;
+        if (ok) visible++;
+      });
+      section.hidden = visible === 0;
+      shown += visible;
+    });
+    empty.hidden = shown > 0;
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var group = chip.dataset.group;
+      state[group] = chip.dataset.value;
+      document.querySelectorAll('.chip[data-group="' + group + '"]').forEach(function (c) {
+        c.setAttribute('aria-pressed', String(c === chip));
+      });
+      apply();
+    });
+  });
+
+  apply();
+})();
+</script>
 
 </body>
 </html>
