@@ -3,22 +3,22 @@
   "redirects": [
     {
       "source": "/napoli/",
-      "destination": "https://mimmopalmieri-com.vercel.app/list/napoli",
+      "destination": "https://mimmopalmieri-com.vercel.app/napolilist",
       "permanent": false
     },
     {
       "source": "/napoli",
-      "destination": "https://mimmopalmieri-com.vercel.app/list/napoli",
+      "destination": "https://mimmopalmieri-com.vercel.app/napolilist",
       "permanent": false
     },
     {
       "source": "/",
-      "destination": "https://mimmopalmieri-com.vercel.app/list",
+      "destination": "https://mimmopalmieri-com.vercel.app/londonlist",
       "permanent": false
     },
     {
       "source": "/:path*",
-      "destination": "https://mimmopalmieri-com.vercel.app/list",
+      "destination": "https://mimmopalmieri-com.vercel.app/londonlist",
       "permanent": false
     }
   ],
