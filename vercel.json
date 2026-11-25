@@ -1,8 +1,26 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/napoli", "destination": "https://mimmopalmieri-com.vercel.app/list/napoli", "permanent": false },
-    { "source": "/", "destination": "https://mimmopalmieri-com.vercel.app/list", "permanent": false },
-    { "source": "/:path*", "destination": "https://mimmopalmieri-com.vercel.app/list", "permanent": false }
-  ]
+    {
+      "source": "/napoli/",
+      "destination": "https://mimmopalmieri-com.vercel.app/list/napoli",
+      "permanent": false
+    },
+    {
+      "source": "/napoli",
+      "destination": "https://mimmopalmieri-com.vercel.app/list/napoli",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "destination": "https://mimmopalmieri-com.vercel.app/list",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://mimmopalmieri-com.vercel.app/list",
+      "permanent": false
+    }
+  ],
+  "trailingSlash": false
 }
